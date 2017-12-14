@@ -1,0 +1,31 @@
+﻿@using CarApp.Domain
+@model List<Car>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Car list</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Body type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <th>@car.Brand.Name</th>
+                    <th>@car.Model</th>
+                    <th>@car.BodyType.Name</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Create new Car", "Create", "Car", new { @class = "btn-default" }, null)
+</div>
+
