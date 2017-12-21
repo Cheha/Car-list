@@ -1,5 +1,5 @@
-﻿@using CarApp.Domain
-@model List<Car>
+﻿@using CarApp.Models
+@model List<CarViewModel>
 @{
     ViewBag.Title = "Index";
 }
@@ -13,15 +13,17 @@
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Body type</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var car in Model)
             {
                 <tr>
-                    <th>@car.Brand.Name</th>
+                    <th>@car.BrandName</th>
                     <th>@car.Model</th>
-                    <th>@car.BodyType.Name</th>
+                    <th>@car.BodyType</th>
+                    <th>@Html.ActionLink("Details", "Details", new { carNumber = car.CarNumber })</th>
                 </tr>
             }
         </tbody>

@@ -1,21 +1,22 @@
 ﻿@using CarApp.Domain
+@using CarApp.Models;
 @using CarApp.Services
 
-@model Car
+@model CarBindingModel
 @{
     ViewBag.Title = "Create";
 }
 
 @{ 
     var carService = new CarService();
-    List<Brand> brands = carService.GetAllBrands();
-    List<BodyType> bodyTypes = carService.GetAllBodyTypes();
+    List<BrandViewModel> brands = carService.GetAllBrands();
+    List<BodyTypeViewModel> bodyTypes = carService.GetAllBodyTypes();
 
     List<SelectListItem> brandSelect = brands.Select(_ =>
-        new SelectListItem { Text = _.Name, Value = _.Id.ToString() })
+        new SelectListItem { Text = _.BrandName, Value = _.BrandNumber })
         .ToList();
     List<SelectListItem> bodyTypesSelect = bodyTypes.Select(_ =>
-        new SelectListItem { Text = _.Name, Value = _.Id.ToString() })
+        new SelectListItem { Text = _.BodyTypeName, Value = _.BodyTypeNumber} )
         .ToList();
 }
 
@@ -29,11 +30,11 @@
         </div>
         <div class="form-group">
             <label>Brand</label>
-            @Html.ListBoxFor(_ => _.BrandId, brandSelect)
+            @Html.ListBoxFor(_ => _.BrandNumber, brandSelect)
         </div>
         <div class="form-group">
             <label>Body type</label>
-            @Html.ListBoxFor(_ => _.BodyTypeId, bodyTypesSelect)
+            @Html.ListBoxFor(_ => _.BodyTypeNumber, bodyTypesSelect)
         </div>
         <input type="submit" />
     </div>  

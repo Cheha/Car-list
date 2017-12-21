@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using CarApp.Domain;
+using CarApp.Models;
 
 namespace CarApp.Services
 {
     public interface ICarService
     {
-        List<Car> GetAllCars();
-        void AddCar(Car car);
-        List<Brand> GetAllBrands();
-        List<BodyType> GetAllBodyTypes();
+        List<CarViewModel> GetAllCars();
+        void AddCar(CarBindingModel car);
+        List<BrandViewModel> GetAllBrands();
+        List<BodyTypeViewModel> GetAllBodyTypes();
+        CarViewModel GetCar(string carNumber);
     }
 }

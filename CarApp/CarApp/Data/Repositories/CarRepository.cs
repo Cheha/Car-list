@@ -31,7 +31,10 @@ namespace CarApp.Data.Repositories
 
         public Car Get(int id)
         {
-            return _context.Cars.Find(id);
+            return _context.Cars
+                .Include("BodyType")
+                .Include("Brand")
+                .FirstOrDefault(_ => _.Id == id);
         }
     }
 }

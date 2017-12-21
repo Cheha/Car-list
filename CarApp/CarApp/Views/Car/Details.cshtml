@@ -1,0 +1,12 @@
+﻿@using CarApp.Models
+@model CarViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Brand: @Model.BrandName</h2>
+<h2>Model: @Model.Model</h2>
+<h2>Body: @Model.BodyType</h2>
+
+@Html.Partial("_Details", Model.BrandName)
+
